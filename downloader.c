@@ -21,11 +21,11 @@ void download(string addr, ofstream& log)
 	key.lock();
 	time_t now = time(0);
 	tm* ltime = localtime(&now);
-	file << "\nName:\t" << addr <<endl;
-	file <<"ID:\t"<< this_thread::get_id() << endl;
-	file << "Time:\t" <<ltime->tm_hour << ":";
-	file <<ltime->tm_min << ":";
-	file <<ltime->tm_sec << endl;
+	log << "\nName:\t" << addr <<endl;
+	log <<"ID:\t"<< this_thread::get_id() << endl;
+	log << "Time:\t" <<ltime->tm_hour << ":";
+	log <<ltime->tm_min << ":";
+	log <<ltime->tm_sec << endl;
 	key.unlock();
 }
 
@@ -46,6 +46,6 @@ int main()
 	{
 		threads[i].join();
 	}
-	file.close();
+	log.close();
 	return 0;
 }
